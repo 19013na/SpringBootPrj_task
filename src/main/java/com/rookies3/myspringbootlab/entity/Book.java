@@ -1,18 +1,15 @@
 package com.rookies3.myspringbootlab.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.DynamicUpdate;
-import jakarta.persistence.Id;
 
 import java.time.LocalDate;
 
 @Entity
 @Setter @Getter
-@DynamicUpdate
+@Table(name = "books")
 public class Book {
 
     @Id

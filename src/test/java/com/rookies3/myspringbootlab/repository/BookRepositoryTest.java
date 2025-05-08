@@ -4,6 +4,7 @@ import com.rookies3.myspringbootlab.entity.Book;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.Rollback;
 import org.springframework.transaction.annotation.Transactional;
@@ -21,8 +22,8 @@ class BookRepositoryTest {
     BookRepository bookRepository;
 
     //도서 등록 테스트
-    @Test @Disabled
-    @Rollback(value = false)
+    @Test //@Disabled
+    //@Rollback(value = false)
     void testCreateBook(){
             Book book1 = new Book();
             book1.setTitle("스프링 부트 입문");
@@ -61,20 +62,20 @@ class BookRepositoryTest {
     }
 
     //도서 정보 수정 테스트
-    @Test
+    @Test //@Disabled
     void testUpdateBook(){
-        Book book = bookRepository.findById(3L)
+        Book book = bookRepository.findById(9L)
                 .orElseThrow(() -> new RuntimeException("Book Not Found"));
         book.setPrice(25000);
         assertThat(book.getPrice()).isEqualTo(25000);
     }
 
     //도서 삭제 테스트
-    @Test
+    @Test //@Disabled
     void testDeleteBook(){
-        Book book = bookRepository.findById(4L)
+        Book book = bookRepository.findById(9L)
                 .orElseThrow(() -> new RuntimeException("Book Not Found"));
         bookRepository.delete(book);
-        assertThat(bookRepository.findById(4L)).isEmpty();
+        assertThat(bookRepository.findById(9L)).isEmpty();
     }
 }

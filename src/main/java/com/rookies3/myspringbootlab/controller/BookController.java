@@ -31,6 +31,7 @@ public class BookController {
     }
 
     //ID로 특정 도서 조회
+    //map() / orElse() 를 사용
     @GetMapping("/{id}")
     public ResponseEntity<Book> getBookById(@PathVariable Long id){
         Optional<Book> book = bookRepository.findById(id);
@@ -39,6 +40,7 @@ public class BookController {
     }
 
     //ISBN으로 도서 조회
+    //BusinessException 과 ErrorObject / DefaultExceptionAdvice 를 사용
     @GetMapping("/isbn/{isbn}")
     public Book getUserByIsbn(@PathVariable String isbn){
         Optional<Book> book = bookRepository.findByIsbn(isbn);
