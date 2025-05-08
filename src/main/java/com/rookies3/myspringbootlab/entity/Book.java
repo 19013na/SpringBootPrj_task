@@ -3,11 +3,16 @@ package com.rookies3.myspringbootlab.entity;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
-import org.springframework.data.annotation.Id;
+import lombok.Getter;
+import lombok.Setter;
+import org.hibernate.annotations.DynamicUpdate;
+import jakarta.persistence.Id;
 
 import java.time.LocalDate;
 
 @Entity
+@Setter @Getter
+@DynamicUpdate
 public class Book {
 
     @Id
