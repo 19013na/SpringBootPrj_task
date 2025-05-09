@@ -21,8 +21,9 @@ public class BookController {
     private final BookRepository bookRepository;
 
     @PostMapping
-    public Book create(@RequestBody Book book){
-        return bookRepository.save(book);
+    public ResponseEntity<Book> create(@RequestBody Book book){
+        Book savedBook = bookRepository.save(book);
+        return new ResponseEntity<>(savedBook, HttpStatus.CREATED);
     }
 
     @GetMapping
@@ -61,6 +62,9 @@ public class BookController {
     //도서 삭제
     @DeleteMapping("/{id}")
     public ResponseEntity<?> deleteBookById(@PathVariable Long id){
+//        if(!bookRepository.existsById(id)){
+//            return ResponseEntity.notFound().build();
+//        }
         Book findBook = bookRepository.findById(id)
                 .orElseThrow(() -> new BusinessException("Book Not Found", HttpStatus.NOT_FOUND));
         bookRepository.delete(findBook);
