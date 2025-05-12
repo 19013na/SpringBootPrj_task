@@ -20,7 +20,7 @@ public class BookController {
     // 등록
     @PostMapping
     public ResponseEntity<BookDTO.BookResponse> createBook(@Valid @RequestBody BookDTO.BookCreateRequest request) {
-        BookDTO.BookResponse createBook = bookService.createUser(request);
+        BookDTO.BookResponse createBook = bookService.createBook(request);
         return ResponseEntity.ok(createBook);
     }
 
