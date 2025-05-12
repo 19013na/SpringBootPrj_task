@@ -18,6 +18,7 @@ public class BookController {
     final private BookService bookService;
 
     // 등록
+    /*
     @PostMapping
     public ResponseEntity<BookDTO.BookResponse> createBook(@Valid @RequestBody BookDTO.BookCreateRequest request) {
         BookDTO.BookResponse createBook = bookService.createBook(request);
@@ -58,4 +59,5 @@ public class BookController {
         bookService.deleteBook(id);
         return ResponseEntity.noContent().build();
     }
+     */
 }
