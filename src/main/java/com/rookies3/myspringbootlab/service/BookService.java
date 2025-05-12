@@ -16,7 +16,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class BookService {
 
-    final private BookRepository bookRepository;
+    private final BookRepository bookRepository;
 
     public List<BookDTO.BookResponse> getAllBooks(){
         List<Book> bookList = bookRepository.findAll();
@@ -45,7 +45,13 @@ public class BookService {
 
     // 생성
     @Transactional
-    public BookDTO.BookResponse createUser(BookDTO.BookCreateRequest request){
+    public BookDTO.BookResponse createBook(BookDTO.BookCreateRequest request){
+        // ISBN 중복 검사
+        bookRepository.findByIsbn(request.getIsbn())
+                .ifPresent(book -> {
+                    throw new BusinessException("Book with this ISBN already exists", HttpStatus.CONFLICT);
+                });
+
         Book book = request.toEntity();
         return BookDTO.BookResponse.from(bookRepository.save(book));
     }
@@ -65,6 +71,10 @@ public class BookService {
     // 삭제
     @Transactional
     public void deleteBook(Long id){
+        if(!bookRepository.existsById(id)){
+            throw new BusinessException("Book already not exist", HttpStatus.NOT_FOUND);
+        }
+
         Book book = getBook(id);
         bookRepository.delete(book);
     }

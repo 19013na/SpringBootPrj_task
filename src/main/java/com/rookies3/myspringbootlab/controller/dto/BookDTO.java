@@ -29,6 +29,7 @@ public class BookDTO {
         @Positive(message = "가격은 양수여야 합니다.")
         private Integer price;
 
+        //@NotBlank(message = "출판일자는 필수 입력 항목입니다.")
         private LocalDate publishDate;
 
         // BookCreateResponse -> Book entity로 변환
@@ -52,8 +53,13 @@ public class BookDTO {
         private Integer price;
 
         // 확장 가능성을 위해 추가 필드들을 옵셔널하게 포함할 수 있음
+        @NotBlank(message = "제목은 필수 입력 항목입니다.")
         private String title;
+
+        @NotBlank(message = "저자는 필수 입력 항목입니다.")
         private String author;
+
+        //@NotBlank(message = "출판일자는 필수 입력 항목입니다.")
         private LocalDate publishDate;
     }
 

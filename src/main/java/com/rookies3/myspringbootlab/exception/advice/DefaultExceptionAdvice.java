@@ -71,6 +71,10 @@ public class DefaultExceptionAdvice {
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity<ValidationErrorResponse> handleValidationExceptions(
             MethodArgumentNotValidException ex) {
+
+        // 자세한 오류 알고싶을 때
+        log.error(ex.getMessage(), ex);
+
         Map<String, String> errors = new HashMap<>();
         ex.getBindingResult()
                 .getAllErrors()
