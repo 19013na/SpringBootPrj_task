@@ -2,12 +2,12 @@ package com.rookies3.myspringbootlab.entity;
 
 
 import jakarta.persistence.*;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 @Entity
 @Table(name = "book_details")
+@NoArgsConstructor
+@AllArgsConstructor
 @Builder
 @Getter @Setter
 public class BookDetail {
@@ -25,12 +25,13 @@ public class BookDetail {
     @Column(nullable = false)
     private Integer pageCount;
 
-    @Column(nullable = false)
+    @Column
     private String publisher;
 
-    @Column(nullable = false)
+    @Column
     private String coverImageUrl;
 
+    @Column
     private String edition;
 
     @OneToOne(fetch = FetchType.LAZY)

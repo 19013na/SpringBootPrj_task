@@ -2,9 +2,14 @@ package com.rookies3.myspringbootlab.service;
 
 import com.rookies3.myspringbootlab.controller.dto.BookDTO;
 import com.rookies3.myspringbootlab.entity.Book;
+import com.rookies3.myspringbootlab.entity.BookDetail;
 import com.rookies3.myspringbootlab.exception.BusinessException;
+import com.rookies3.myspringbootlab.exception.ErrorCode;
+import com.rookies3.myspringbootlab.repository.BookDetailRepository;
 import com.rookies3.myspringbootlab.repository.BookRepository;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.hibernate.validator.constraints.ISBN;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -17,6 +22,7 @@ import java.util.List;
 public class BookService {
 
     private final BookRepository bookRepository;
+    private final BookDetailRepository bookDetailRepository;
 
     public List<BookDTO.Response> getAllBooks(){
         List<Book> bookList = bookRepository.findAll();
@@ -32,12 +38,21 @@ public class BookService {
 
     public BookDTO.Response getBookByIsbn(String isbn){
         Book existBook = bookRepository.findByIsbn(isbn)
-                .orElseThrow(() -> new BusinessException("Book Not Found", HttpStatus.NOT_FOUND));
+                .orElseThrow(() -> new BusinessException(ErrorCode.RESOURCE_NOT_FOUND,
+                        "Book", "isbn", isbn));
         return BookDTO.Response.fromEntity(existBook);
     }
 
+    public BookDTO.Response getBookByTitle(String title) {
+        Book existBook = bookRepository.findByTitle(title)
+                .orElseThrow(() -> new BusinessException(ErrorCode.RESOURCE_NOT_FOUND,
+                        "Book", "title", title));
+        return BookDTO.Response.fromEntity(existBook);
+
+    }
+
     public List<BookDTO.Response> getBooksByAuthor(String author){
-        List<Book> bookList = bookRepository.findByAuthor(author);
+        List<Book> bookList = bookRepository.findByAuthorContaining(author);
         return bookList.stream()
                 .map(BookDTO.Response::fromEntity)
                 .toList();
@@ -49,7 +64,7 @@ public class BookService {
         // ISBN 중복 검사
         bookRepository.findByIsbn(request.getIsbn())
                 .ifPresent(book -> {
-                    throw new BusinessException("Book with this ISBN already exists", HttpStatus.CONFLICT);
+                    throw new BusinessException(ErrorCode.RESOURCE_DUPLICATE, "Book", "ISBN", request.getIsbn());
                 });
 
         Book book = Book.builder()
@@ -59,6 +74,17 @@ public class BookService {
                 .price(request.getPrice())
                 .build();
 
+        if(request.getDetailRequest() != null){
+            BookDetail bookDetail = BookDetail.builder()
+                    .description(request.getDetailRequest().getDescription())
+                    .language(request.getDetailRequest().getLanguage())
+                    .pageCount(request.getDetailRequest().getPageCount())
+                    .publisher(request.getDetailRequest().getPublisher())
+                    .coverImageUrl(request.getDetailRequest().getCoverImageUrl())
+                    .edition(request.getDetailRequest().getEdition())
+                    .build();
+            book.setBookDetail(bookDetail);
+        }
         return BookDTO.Response.fromEntity(bookRepository.save(book));
     }
 
@@ -67,12 +93,11 @@ public class BookService {
     public BookDTO.Response updateBook(Long id, BookDTO.Request request){
         Book book = findBookById(id);
 
-        // 변경이 필요한 필드만 업데이트
+        // Book : 변경이 필요한 필드만 업데이트
         if (request.getPrice() != null) {
             book.setPrice(request.getPrice());
         }
 
-        // 확장성을 위한 추가 필드 업데이트
         if (request.getTitle() != null) {
             book.setTitle(request.getTitle());
         }
@@ -85,6 +110,31 @@ public class BookService {
             book.setPublishDate(request.getPublishDate());
         }
 
+        // BookDetail
+        if (request.getDetailRequest() != null){
+            BookDetail bookDetail = book.getBookDetail();
+
+            if(bookDetail == null){
+                bookDetail = new BookDetail();
+                bookDetail.setBook(book);
+                book.setBookDetail(bookDetail);
+            }
+
+            // BookDetail 업데이트
+            if (request.getDetailRequest().getDescription() != null) {
+                bookDetail.setDescription(request.getDetailRequest().getDescription());
+            }
+            if (request.getDetailRequest().getLanguage() != null) {
+                bookDetail.setLanguage(request.getDetailRequest().getLanguage());
+            }
+            if (request.getDetailRequest().getPageCount() != null) {
+                bookDetail.setPageCount(request.getDetailRequest().getPageCount());
+            }
+//            bookDetail.setPublisher(request.getDetailRequest().getPublisher());
+//            bookDetail.setCoverImageUrl(request.getDetailRequest().getCoverImageUrl());
+//            bookDetail.setEdition(request.getDetailRequest().getEdition());
+        }
+
         Book updatedBook = bookRepository.save(book);
         return BookDTO.Response.fromEntity(updatedBook);
     }
@@ -93,15 +143,15 @@ public class BookService {
     @Transactional
     public void deleteBook(Long id){
         if(!bookRepository.existsById(id)){
-            throw new BusinessException("Book Not Found with ID: " + id, HttpStatus.NOT_FOUND);
+            throw new BusinessException(ErrorCode.RESOURCE_NOT_FOUND,
+                    "Book", "id", id);
         }
-
-        Book book = findBookById(id);
-        bookRepository.delete(book);
+        bookRepository.deleteById(id);
     }
 
     private Book findBookById(Long id) {
         return bookRepository.findById(id)
-                .orElseThrow(() -> new BusinessException("Book Not Found with ID: " + id, HttpStatus.NOT_FOUND));
+                .orElseThrow(() -> new BusinessException(ErrorCode.RESOURCE_NOT_FOUND,
+                        "Book", "id", id));
     }
 }

@@ -14,8 +14,11 @@ import java.util.Optional;
 public interface BookRepository extends JpaRepository<Book, Long> {
     Optional<Book> findByIsbn(String isbn);
     List<Book> findByAuthor(String author);
+    List<Book> findByAuthorContaining(String keyword);
+    Optional<Book> findByTitle(String title);
 
-    @Query("SELECT b FROM Book b JOIN FETCH b.bookDetail WHERE b.id = :id")
+    //@Query("SELECT b FROM Book b JOIN FETCH b.bookDetail WHERE b.id = :id")
+    @Query("SELECT b FROM Book b LEFT JOIN FETCH b.bookDetail WHERE b.id = :id")
     Optional<Book> findByIdWithBookDetail(@Param("id") Long bookId);
 
     @Query("SELECT b FROM Book b JOIN FETCH b.bookDetail WHERE b.isbn = :isbn")
