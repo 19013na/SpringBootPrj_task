@@ -43,16 +43,15 @@ public class BookService {
         return BookDTO.Response.fromEntity(existBook);
     }
 
-    public BookDTO.Response getBookByTitle(String title) {
-        Book existBook = bookRepository.findByTitle(title)
-                .orElseThrow(() -> new BusinessException(ErrorCode.RESOURCE_NOT_FOUND,
-                        "Book", "title", title));
-        return BookDTO.Response.fromEntity(existBook);
-
+    public List<BookDTO.Response> getBookByTitle(String title) {
+        List<Book> bookList = bookRepository.findByTitleContainingIgnoreCase(title);
+        return bookList.stream()
+                .map(BookDTO.Response::fromEntity)
+                .toList();
     }
 
     public List<BookDTO.Response> getBooksByAuthor(String author){
-        List<Book> bookList = bookRepository.findByAuthorContaining(author);
+        List<Book> bookList = bookRepository.findByAuthorContainingIgnoreCase(author);
         return bookList.stream()
                 .map(BookDTO.Response::fromEntity)
                 .toList();

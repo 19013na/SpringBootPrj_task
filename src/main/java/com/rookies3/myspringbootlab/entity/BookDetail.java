@@ -14,24 +14,25 @@ public class BookDetail {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name= "book_detail_id")
     private Long id;
 
-    @Column(nullable = false)
+    @Column(columnDefinition = "TEXT")
     private String description;
 
-    @Column(nullable = false)
+    @Column(name = "language")
     private String language;
 
-    @Column(nullable = false)
+    @Column(name = "page_count")
     private Integer pageCount;
 
-    @Column
+    @Column(name = "publisher")
     private String publisher;
 
-    @Column
+    @Column(name = "cover_image_url")
     private String coverImageUrl;
 
-    @Column
+    @Column(name = "edition")
     private String edition;
 
     @OneToOne(fetch = FetchType.LAZY)
