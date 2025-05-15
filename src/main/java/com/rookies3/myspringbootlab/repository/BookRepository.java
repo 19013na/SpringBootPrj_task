@@ -1,7 +1,6 @@
 package com.rookies3.myspringbootlab.repository;
 
 import com.rookies3.myspringbootlab.entity.Book;
-import com.rookies3.myspringbootlab.entity.BookDetail;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -13,9 +12,12 @@ import java.util.Optional;
 @Repository
 public interface BookRepository extends JpaRepository<Book, Long> {
     Optional<Book> findByIsbn(String isbn);
-    List<Book> findByAuthor(String author);
-    List<Book> findByAuthorContaining(String keyword);
+
+    // list '% param %' 효과
+    List<Book> findByAuthorContainingIgnoreCase(String author);
+
     Optional<Book> findByTitle(String title);
+    List<Book> findByTitleContainingIgnoreCase(String title);
 
     //@Query("SELECT b FROM Book b JOIN FETCH b.bookDetail WHERE b.id = :id")
     @Query("SELECT b FROM Book b LEFT JOIN FETCH b.bookDetail WHERE b.id = :id")
@@ -25,6 +27,4 @@ public interface BookRepository extends JpaRepository<Book, Long> {
     Optional<Book> findByIsbnWithBookDetail(String isbn);
 
     boolean existsByIsbn(String isbn);
-
-    List<Book> findByAuthorContainingIgnoreCase(String author);
 }

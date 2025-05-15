@@ -41,7 +41,7 @@ public class BookController {
     }
 
     @GetMapping("/search/title")
-    public ResponseEntity<BookDTO.Response> getBookByTitle(@RequestParam String title){
+    public ResponseEntity<List<BookDTO.Response>> getBookByTitle(@RequestParam String title){
         return ResponseEntity.ok(bookService.getBookByTitle(title));
     }
 
