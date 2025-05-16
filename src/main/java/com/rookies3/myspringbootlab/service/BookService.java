@@ -71,6 +71,7 @@ public class BookService {
                 .title(request.getTitle())
                 .author(request.getAuthor())
                 .price(request.getPrice())
+                .publishDate(request.getPublishDate())
                 .build();
 
         if(request.getDetailRequest() != null){
@@ -81,62 +82,57 @@ public class BookService {
                     .publisher(request.getDetailRequest().getPublisher())
                     .coverImageUrl(request.getDetailRequest().getCoverImageUrl())
                     .edition(request.getDetailRequest().getEdition())
+                    .book(book)
                     .build();
             book.setBookDetail(bookDetail);
         }
         return BookDTO.Response.fromEntity(bookRepository.save(book));
     }
 
-    // 수정
     @Transactional
-    public BookDTO.Response updateBook(Long id, BookDTO.Request request){
-        Book book = findBookById(id);
+    public BookDTO.Response updateBook(Long id, BookDTO.Request request) {
+        // Find the book
+        Book book = bookRepository.findById(id)
+                .orElseThrow(() -> new BusinessException(ErrorCode.RESOURCE_NOT_FOUND, "Book", "id", id));
 
-        // Book : 변경이 필요한 필드만 업데이트
-        if (request.getPrice() != null) {
-            book.setPrice(request.getPrice());
+        // Check if another book already has the ISBN
+        if (!book.getIsbn().equals(request.getIsbn()) &&
+                bookRepository.existsByIsbn(request.getIsbn())) {
+            throw new BusinessException(ErrorCode.ISBN_DUPLICATE, request.getIsbn());
         }
 
-        if (request.getTitle() != null) {
-            book.setTitle(request.getTitle());
-        }
+        // Update book basic info
+        book.setTitle(request.getTitle());
+        book.setAuthor(request.getAuthor());
+        book.setIsbn(request.getIsbn());
+        book.setPrice(request.getPrice());
+        book.setPublishDate(request.getPublishDate());
 
-        if (request.getAuthor() != null) {
-            book.setAuthor(request.getAuthor());
-        }
-
-        if (request.getPublishDate() != null) {
-            book.setPublishDate(request.getPublishDate());
-        }
-
-        // BookDetail
-        if (request.getDetailRequest() != null){
+        // Update book detail if provided
+        if (request.getDetailRequest() != null) {
             BookDetail bookDetail = book.getBookDetail();
 
-            if(bookDetail == null){
+            // Create new detail if not exists
+            if (bookDetail == null) {
                 bookDetail = new BookDetail();
                 bookDetail.setBook(book);
                 book.setBookDetail(bookDetail);
             }
 
-            // BookDetail 업데이트
-            if (request.getDetailRequest().getDescription() != null) {
-                bookDetail.setDescription(request.getDetailRequest().getDescription());
-            }
-            if (request.getDetailRequest().getLanguage() != null) {
-                bookDetail.setLanguage(request.getDetailRequest().getLanguage());
-            }
-            if (request.getDetailRequest().getPageCount() != null) {
-                bookDetail.setPageCount(request.getDetailRequest().getPageCount());
-            }
-//            bookDetail.setPublisher(request.getDetailRequest().getPublisher());
-//            bookDetail.setCoverImageUrl(request.getDetailRequest().getCoverImageUrl());
-//            bookDetail.setEdition(request.getDetailRequest().getEdition());
+            // Update detail fields
+            bookDetail.setDescription(request.getDetailRequest().getDescription());
+            bookDetail.setLanguage(request.getDetailRequest().getLanguage());
+            bookDetail.setPageCount(request.getDetailRequest().getPageCount());
+            bookDetail.setPublisher(request.getDetailRequest().getPublisher());
+            bookDetail.setCoverImageUrl(request.getDetailRequest().getCoverImageUrl());
+            bookDetail.setEdition(request.getDetailRequest().getEdition());
         }
 
+        // Save and return updated book
         Book updatedBook = bookRepository.save(book);
         return BookDTO.Response.fromEntity(updatedBook);
     }
+
 
     // 삭제
     @Transactional
