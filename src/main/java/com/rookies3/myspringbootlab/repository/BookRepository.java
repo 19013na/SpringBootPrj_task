@@ -20,11 +20,18 @@ public interface BookRepository extends JpaRepository<Book, Long> {
     List<Book> findByTitleContainingIgnoreCase(String title);
 
     //@Query("SELECT b FROM Book b JOIN FETCH b.bookDetail WHERE b.id = :id")
-    @Query("SELECT b FROM Book b LEFT JOIN FETCH b.bookDetail WHERE b.id = :id")
-    Optional<Book> findByIdWithBookDetail(@Param("id") Long bookId);
+//    @Query("SELECT b FROM Book b LEFT JOIN FETCH b.bookDetail WHERE b.id = :id")
+//    Optional<Book> findByIdWithBookDetail(@Param("id") Long bookId);
+//
+//    @Query("SELECT b FROM Book b JOIN FETCH b.bookDetail WHERE b.isbn = :isbn")
+//    Optional<Book> findByIsbnWithBookDetail(String isbn);
 
-    @Query("SELECT b FROM Book b JOIN FETCH b.bookDetail WHERE b.isbn = :isbn")
-    Optional<Book> findByIsbnWithBookDetail(String isbn);
+    // left join으로 변경
+    @Query("SELECT b FROM Book b LEFT JOIN FETCH b.bookDetail WHERE b.id = :id")
+    Optional<Book> findByIdWithBookDetail(@Param("id") Long id);
+
+    @Query("SELECT b FROM Book b LEFT JOIN FETCH b.bookDetail WHERE b.isbn = :isbn")
+    Optional<Book> findByIsbnWithBookDetail(@Param("isbn") String isbn);
 
     boolean existsByIsbn(String isbn);
 }
