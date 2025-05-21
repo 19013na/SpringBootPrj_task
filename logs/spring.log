@@ -1200,3 +1200,194 @@ com.rookies3.myspringbootlab.exception.BusinessException: Book not found with id
 2025-05-21T09:12:42.249+09:00  INFO 24468 --- [MySpringbootLab] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
 2025-05-21T09:12:42.253+09:00  INFO 24468 --- [MySpringbootLab] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
 2025-05-21T09:12:42.258+09:00  INFO 24468 --- [MySpringbootLab] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-05-21T12:58:33.873+09:00  INFO 13060 --- [MySpringbootLab] [restartedMain] c.r.m.MySpringbootLabApplication         : Starting MySpringbootLabApplication using Java 17.0.14 with PID 13060 (C:\sk\backend\MySpringbootLab\target\classes started by yondu in C:\sk\backend\MySpringbootLab)
+2025-05-21T12:58:33.878+09:00  INFO 13060 --- [MySpringbootLab] [restartedMain] c.r.m.MySpringbootLabApplication         : The following 1 profile is active: "test"
+2025-05-21T12:58:33.958+09:00  INFO 13060 --- [MySpringbootLab] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2025-05-21T12:58:33.958+09:00  INFO 13060 --- [MySpringbootLab] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2025-05-21T12:58:35.929+09:00  INFO 13060 --- [MySpringbootLab] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-05-21T12:58:36.032+09:00  INFO 13060 --- [MySpringbootLab] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 87 ms. Found 3 JPA repository interfaces.
+2025-05-21T12:58:37.892+09:00  INFO 13060 --- [MySpringbootLab] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-05-21T12:58:37.946+09:00  INFO 13060 --- [MySpringbootLab] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-05-21T12:58:37.947+09:00  INFO 13060 --- [MySpringbootLab] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.40]
+2025-05-21T12:58:38.175+09:00  INFO 13060 --- [MySpringbootLab] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-05-21T12:58:38.176+09:00  INFO 13060 --- [MySpringbootLab] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 4215 ms
+2025-05-21T12:58:39.363+09:00  INFO 13060 --- [MySpringbootLab] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-05-21T12:58:39.465+09:00  INFO 13060 --- [MySpringbootLab] [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.13.Final
+2025-05-21T12:58:39.567+09:00  INFO 13060 --- [MySpringbootLab] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-05-21T12:58:40.083+09:00  INFO 13060 --- [MySpringbootLab] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-05-21T12:58:40.128+09:00  INFO 13060 --- [MySpringbootLab] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-05-21T12:58:40.208+09:00  INFO 13060 --- [MySpringbootLab] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.mariadb.jdbc.Connection@58e050aa
+2025-05-21T12:58:40.210+09:00  INFO 13060 --- [MySpringbootLab] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-05-21T12:58:40.250+09:00  WARN 13060 --- [MySpringbootLab] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: MariaDBDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-05-21T12:58:40.280+09:00  INFO 13060 --- [MySpringbootLab] [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 10.11.5
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-05-21T12:58:41.649+09:00  INFO 13060 --- [MySpringbootLab] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-05-21T12:58:41.829+09:00  INFO 13060 --- [MySpringbootLab] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-05-21T12:58:42.238+09:00  INFO 13060 --- [MySpringbootLab] [restartedMain] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-05-21T12:58:43.462+09:00  WARN 13060 --- [MySpringbootLab] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-05-21T12:58:44.287+09:00  WARN 13060 --- [MySpringbootLab] [restartedMain] ion$DefaultTemplateResolverConfiguration : Cannot find template location: classpath:/templates/ (please add some templates, check your Thymeleaf configuration, or set spring.thymeleaf.check-template-location=false)
+2025-05-21T12:58:45.181+09:00  INFO 13060 --- [MySpringbootLab] [restartedMain] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:mariadb://127.0.0.1:3307/books?user=boot&password=***'
+2025-05-21T12:58:45.265+09:00  INFO 13060 --- [MySpringbootLab] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2025-05-21T12:58:45.282+09:00  INFO 13060 --- [MySpringbootLab] [restartedMain] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path '/actuator'
+2025-05-21T12:58:45.467+09:00  INFO 13060 --- [MySpringbootLab] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2025-05-21T12:58:45.490+09:00  INFO 13060 --- [MySpringbootLab] [restartedMain] c.r.m.MySpringbootLabApplication         : Started MySpringbootLabApplication in 12.366 seconds (process running for 12.983)
+2025-05-21T12:58:45.578+09:00  INFO 13060 --- [MySpringbootLab] [restartedMain] c.r.m.runner.BookDataInitRunner          : Starting book data initialization...
+2025-05-21T12:58:45.663+09:00  INFO 13060 --- [MySpringbootLab] [restartedMain] c.r.m.runner.BookDataInitRunner          : Creating publishers...
+2025-05-21T12:58:45.746+09:00  INFO 13060 --- [MySpringbootLab] [restartedMain] c.r.m.runner.BookDataInitRunner          : Created 4 publishers
+2025-05-21T12:58:45.747+09:00  INFO 13060 --- [MySpringbootLab] [restartedMain] c.r.m.runner.BookDataInitRunner          : Creating books...
+2025-05-21T12:58:45.808+09:00  INFO 13060 --- [MySpringbootLab] [restartedMain] c.r.m.runner.BookDataInitRunner          : Created 8 books
+2025-05-21T12:58:45.809+09:00  INFO 13060 --- [MySpringbootLab] [restartedMain] c.r.m.runner.BookDataInitRunner          : Book data initialization completed successfully
+2025-05-21T12:58:45.837+09:00  INFO 13060 --- [MySpringbootLab] [restartedMain] c.r.m.runner.BookDataInsertRunner        : Starting Book-only data initialization...
+2025-05-21T12:58:45.841+09:00  INFO 13060 --- [MySpringbootLab] [restartedMain] c.r.m.runner.BookDataInsertRunner        : Creating books with details (no publisher)...
+2025-05-21T12:58:45.877+09:00  INFO 13060 --- [MySpringbootLab] [restartedMain] c.r.m.runner.BookDataInsertRunner        : Created 14 books with/without details
+2025-05-21T12:58:45.878+09:00  INFO 13060 --- [MySpringbootLab] [restartedMain] c.r.m.runner.BookDataInsertRunner        : Book-only data initialization completed successfully
+2025-05-21T12:58:45.884+09:00  INFO 13060 --- [MySpringbootLab] [restartedMain] c.r.myspringbootlab.runner.MyPropRunner  : 1-4 username : springboot
+2025-05-21T12:58:45.885+09:00  INFO 13060 --- [MySpringbootLab] [restartedMain] c.r.myspringbootlab.runner.MyPropRunner  : 1-4 port : 97
+2025-05-21T12:59:03.055+09:00  INFO 13060 --- [MySpringbootLab] [http-nio-8080-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-05-21T12:59:03.055+09:00  INFO 13060 --- [MySpringbootLab] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-05-21T12:59:03.058+09:00  INFO 13060 --- [MySpringbootLab] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2025-05-21T13:01:46.049+09:00  INFO 13060 --- [MySpringbootLab] [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-05-21T13:01:46.198+09:00  INFO 13060 --- [MySpringbootLab] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-05-21T13:01:46.203+09:00  INFO 13060 --- [MySpringbootLab] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-05-21T13:01:46.207+09:00  INFO 13060 --- [MySpringbootLab] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-05-21T13:01:46.211+09:00  INFO 13060 --- [MySpringbootLab] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-05-21T13:01:51.115+09:00  INFO 16760 --- [MySpringbootLab] [restartedMain] c.r.m.MySpringbootLabApplication         : Starting MySpringbootLabApplication using Java 17.0.14 with PID 16760 (C:\sk\backend\MySpringbootLab\target\classes started by yondu in C:\sk\backend\MySpringbootLab)
+2025-05-21T13:01:51.120+09:00  INFO 16760 --- [MySpringbootLab] [restartedMain] c.r.m.MySpringbootLabApplication         : The following 1 profile is active: "test"
+2025-05-21T13:01:51.215+09:00  INFO 16760 --- [MySpringbootLab] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2025-05-21T13:01:51.216+09:00  INFO 16760 --- [MySpringbootLab] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2025-05-21T13:01:52.964+09:00  INFO 16760 --- [MySpringbootLab] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-05-21T13:01:53.072+09:00  INFO 16760 --- [MySpringbootLab] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 93 ms. Found 3 JPA repository interfaces.
+2025-05-21T13:01:54.783+09:00  INFO 16760 --- [MySpringbootLab] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-05-21T13:01:54.842+09:00  INFO 16760 --- [MySpringbootLab] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-05-21T13:01:54.844+09:00  INFO 16760 --- [MySpringbootLab] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.40]
+2025-05-21T13:01:55.070+09:00  INFO 16760 --- [MySpringbootLab] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-05-21T13:01:55.071+09:00  INFO 16760 --- [MySpringbootLab] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 3854 ms
+2025-05-21T13:01:56.424+09:00  INFO 16760 --- [MySpringbootLab] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-05-21T13:01:56.688+09:00  INFO 16760 --- [MySpringbootLab] [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.13.Final
+2025-05-21T13:01:56.800+09:00  INFO 16760 --- [MySpringbootLab] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-05-21T13:01:57.443+09:00  INFO 16760 --- [MySpringbootLab] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-05-21T13:01:57.481+09:00  INFO 16760 --- [MySpringbootLab] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-05-21T13:01:57.585+09:00  INFO 16760 --- [MySpringbootLab] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.mariadb.jdbc.Connection@58e050aa
+2025-05-21T13:01:57.587+09:00  INFO 16760 --- [MySpringbootLab] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-05-21T13:01:57.625+09:00  WARN 16760 --- [MySpringbootLab] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: MariaDBDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-05-21T13:01:57.658+09:00  INFO 16760 --- [MySpringbootLab] [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 10.11.5
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-05-21T13:01:58.976+09:00  INFO 16760 --- [MySpringbootLab] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-05-21T13:01:59.210+09:00  INFO 16760 --- [MySpringbootLab] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-05-21T13:01:59.876+09:00  INFO 16760 --- [MySpringbootLab] [restartedMain] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-05-21T13:02:01.259+09:00  WARN 16760 --- [MySpringbootLab] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-05-21T13:02:02.291+09:00  WARN 16760 --- [MySpringbootLab] [restartedMain] ion$DefaultTemplateResolverConfiguration : Cannot find template location: classpath:/templates/ (please add some templates, check your Thymeleaf configuration, or set spring.thymeleaf.check-template-location=false)
+2025-05-21T13:02:03.031+09:00  INFO 16760 --- [MySpringbootLab] [restartedMain] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:mariadb://127.0.0.1:3307/books?user=boot&password=***'
+2025-05-21T13:02:03.146+09:00  INFO 16760 --- [MySpringbootLab] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2025-05-21T13:02:03.164+09:00  INFO 16760 --- [MySpringbootLab] [restartedMain] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path '/actuator'
+2025-05-21T13:02:03.401+09:00  INFO 16760 --- [MySpringbootLab] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2025-05-21T13:02:03.423+09:00  INFO 16760 --- [MySpringbootLab] [restartedMain] c.r.m.MySpringbootLabApplication         : Started MySpringbootLabApplication in 13.034 seconds (process running for 13.621)
+2025-05-21T13:02:03.507+09:00  INFO 16760 --- [MySpringbootLab] [restartedMain] c.r.m.runner.BookDataInitRunner          : Starting book data initialization...
+2025-05-21T13:02:03.590+09:00  INFO 16760 --- [MySpringbootLab] [restartedMain] c.r.m.runner.BookDataInitRunner          : Creating publishers...
+2025-05-21T13:02:03.654+09:00  INFO 16760 --- [MySpringbootLab] [restartedMain] c.r.m.runner.BookDataInitRunner          : Created 4 publishers
+2025-05-21T13:02:03.654+09:00  INFO 16760 --- [MySpringbootLab] [restartedMain] c.r.m.runner.BookDataInitRunner          : Creating books...
+2025-05-21T13:02:03.684+09:00  INFO 16760 --- [MySpringbootLab] [restartedMain] c.r.m.runner.BookDataInitRunner          : Created 8 books
+2025-05-21T13:02:03.684+09:00  INFO 16760 --- [MySpringbootLab] [restartedMain] c.r.m.runner.BookDataInitRunner          : Book data initialization completed successfully
+2025-05-21T13:02:03.703+09:00  INFO 16760 --- [MySpringbootLab] [restartedMain] c.r.m.runner.BookDataInsertRunner        : Starting Book-only data initialization...
+2025-05-21T13:02:03.706+09:00  INFO 16760 --- [MySpringbootLab] [restartedMain] c.r.m.runner.BookDataInsertRunner        : Creating books with details (no publisher)...
+2025-05-21T13:02:03.745+09:00  INFO 16760 --- [MySpringbootLab] [restartedMain] c.r.m.runner.BookDataInsertRunner        : Created 14 books with/without details
+2025-05-21T13:02:03.746+09:00  INFO 16760 --- [MySpringbootLab] [restartedMain] c.r.m.runner.BookDataInsertRunner        : Book-only data initialization completed successfully
+2025-05-21T13:02:03.748+09:00  INFO 16760 --- [MySpringbootLab] [restartedMain] c.r.myspringbootlab.runner.MyPropRunner  : 1-4 username : springboot
+2025-05-21T13:02:03.749+09:00  INFO 16760 --- [MySpringbootLab] [restartedMain] c.r.myspringbootlab.runner.MyPropRunner  : 1-4 port : 23
+2025-05-21T13:02:07.067+09:00  INFO 16760 --- [MySpringbootLab] [http-nio-8080-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-05-21T13:02:07.068+09:00  INFO 16760 --- [MySpringbootLab] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-05-21T13:02:07.071+09:00  INFO 16760 --- [MySpringbootLab] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 3 ms
+2025-05-21T13:02:52.844+09:00 ERROR 16760 --- [MySpringbootLab] [http-nio-8080-exec-3] c.r.m.e.advice.DefaultExceptionAdvice    : Publisher already exists with name: O'Reilly Media
+
+com.rookies3.myspringbootlab.exception.BusinessException: Publisher already exists with name: O'Reilly Media
+	at com.rookies3.myspringbootlab.service.PublisherService.createPublisher(PublisherService.java:63) ~[classes/:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569) ~[na:na]
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:359) ~[spring-aop-6.2.6.jar:6.2.6]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.invokeJoinpoint(ReflectiveMethodInvocation.java:196) ~[spring-aop-6.2.6.jar:6.2.6]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163) ~[spring-aop-6.2.6.jar:6.2.6]
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:380) ~[spring-tx-6.2.6.jar:6.2.6]
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:119) ~[spring-tx-6.2.6.jar:6.2.6]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.2.6.jar:6.2.6]
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:728) ~[spring-aop-6.2.6.jar:6.2.6]
+	at com.rookies3.myspringbootlab.service.PublisherService$$SpringCGLIB$$0.createPublisher(<generated>) ~[classes/:na]
+	at com.rookies3.myspringbootlab.controller.PublisherController.createPublisher(PublisherController.java:37) ~[classes/:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569) ~[na:na]
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:258) ~[spring-web-6.2.6.jar:6.2.6]
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:191) ~[spring-web-6.2.6.jar:6.2.6]
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:118) ~[spring-webmvc-6.2.6.jar:6.2.6]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:986) ~[spring-webmvc-6.2.6.jar:6.2.6]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:891) ~[spring-webmvc-6.2.6.jar:6.2.6]
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87) ~[spring-webmvc-6.2.6.jar:6.2.6]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1089) ~[spring-webmvc-6.2.6.jar:6.2.6]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:979) ~[spring-webmvc-6.2.6.jar:6.2.6]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1014) ~[spring-webmvc-6.2.6.jar:6.2.6]
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:914) ~[spring-webmvc-6.2.6.jar:6.2.6]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:590) ~[tomcat-embed-core-10.1.40.jar:6.0]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885) ~[spring-webmvc-6.2.6.jar:6.2.6]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658) ~[tomcat-embed-core-10.1.40.jar:6.0]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:195) ~[tomcat-embed-core-10.1.40.jar:10.1.40]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.40.jar:10.1.40]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51) ~[tomcat-embed-websocket-10.1.40.jar:10.1.40]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.40.jar:10.1.40]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.40.jar:10.1.40]
+	at org.springframework.web.filter.CorsFilter.doFilterInternal(CorsFilter.java:91) ~[spring-web-6.2.6.jar:6.2.6]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.2.6.jar:6.2.6]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.40.jar:10.1.40]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.40.jar:10.1.40]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-6.2.6.jar:6.2.6]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.2.6.jar:6.2.6]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.40.jar:10.1.40]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.40.jar:10.1.40]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-6.2.6.jar:6.2.6]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.2.6.jar:6.2.6]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.40.jar:10.1.40]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.40.jar:10.1.40]
+	at org.springframework.web.filter.ServerHttpObservationFilter.doFilterInternal(ServerHttpObservationFilter.java:114) ~[spring-web-6.2.6.jar:6.2.6]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.2.6.jar:6.2.6]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.40.jar:10.1.40]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.40.jar:10.1.40]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-6.2.6.jar:6.2.6]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.2.6.jar:6.2.6]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.40.jar:10.1.40]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.40.jar:10.1.40]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167) ~[tomcat-embed-core-10.1.40.jar:10.1.40]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90) ~[tomcat-embed-core-10.1.40.jar:10.1.40]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:483) ~[tomcat-embed-core-10.1.40.jar:10.1.40]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:116) ~[tomcat-embed-core-10.1.40.jar:10.1.40]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93) ~[tomcat-embed-core-10.1.40.jar:10.1.40]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74) ~[tomcat-embed-core-10.1.40.jar:10.1.40]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344) ~[tomcat-embed-core-10.1.40.jar:10.1.40]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:398) ~[tomcat-embed-core-10.1.40.jar:10.1.40]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63) ~[tomcat-embed-core-10.1.40.jar:10.1.40]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:903) ~[tomcat-embed-core-10.1.40.jar:10.1.40]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1740) ~[tomcat-embed-core-10.1.40.jar:10.1.40]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52) ~[tomcat-embed-core-10.1.40.jar:10.1.40]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1189) ~[tomcat-embed-core-10.1.40.jar:10.1.40]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:658) ~[tomcat-embed-core-10.1.40.jar:10.1.40]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63) ~[tomcat-embed-core-10.1.40.jar:10.1.40]
+	at java.base/java.lang.Thread.run(Thread.java:840) ~[na:na]
+
+2025-05-21T13:02:52.890+09:00  WARN 16760 --- [MySpringbootLab] [http-nio-8080-exec-3] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [com.rookies3.myspringbootlab.exception.BusinessException: Publisher already exists with name: O'Reilly Media]
+2025-05-21T13:03:09.810+09:00  INFO 16760 --- [MySpringbootLab] [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-05-21T13:03:10.026+09:00  INFO 16760 --- [MySpringbootLab] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-05-21T13:03:10.032+09:00  INFO 16760 --- [MySpringbootLab] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-05-21T13:03:10.038+09:00  INFO 16760 --- [MySpringbootLab] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-05-21T13:03:10.042+09:00  INFO 16760 --- [MySpringbootLab] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.

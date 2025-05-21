@@ -94,6 +94,16 @@ public class BookService {
                     .build();
             book.setBookDetail(bookDetail);
         }
+
+        // Update Publisher if provided
+        if(request.getPublisherId() != null){
+            Publisher publisher = publisherRepository.findById(request.getPublisherId())
+                    .orElseThrow(() -> new BusinessException(ErrorCode.RESOURCE_NOT_FOUND, "Publisher", "id", request.getPublisherId()));
+
+            book.setPublisher(publisher);
+        }
+
+
         return BookDTO.Response.fromEntity(bookRepository.save(book));
     }
 
