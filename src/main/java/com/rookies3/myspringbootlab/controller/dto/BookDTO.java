@@ -1,6 +1,7 @@
 package com.rookies3.myspringbootlab.controller.dto;
 
 import com.rookies3.myspringbootlab.entity.Book;
+import com.rookies3.myspringbootlab.entity.BookDetail;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.*;
 import lombok.AllArgsConstructor;
@@ -132,5 +133,19 @@ public class BookDTO {
         private String publisher;
         private String coverImageUrl;
         private String edition;
+
+        public static BookDetailResponse fromEntity(BookDetail detail) {
+            if (detail == null) return null;
+
+            return BookDetailResponse.builder()
+                    .id(detail.getId())
+                    .description(detail.getDescription())
+                    .language(detail.getLanguage())
+                    .pageCount(detail.getPageCount())
+                    .publisher(detail.getPublisher())
+                    .coverImageUrl(detail.getCoverImageUrl())
+                    .edition(detail.getEdition())
+                    .build();
+        }
     }
 }

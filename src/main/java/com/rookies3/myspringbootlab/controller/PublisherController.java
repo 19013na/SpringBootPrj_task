@@ -1,5 +1,6 @@
 package com.rookies3.myspringbootlab.controller;
 
+import com.rookies3.myspringbootlab.controller.dto.BookDTO;
 import com.rookies3.myspringbootlab.controller.dto.PublisherDTO;
 import com.rookies3.myspringbootlab.service.PublisherService;
 import jakarta.validation.Valid;
@@ -29,6 +30,12 @@ public class PublisherController {
     @GetMapping("/name/{name}")
     public ResponseEntity<PublisherDTO.SimpleResponse> getPublisherByName(@PathVariable String name){
         return ResponseEntity.ok(publisherService.getPublisherByName(name));
+    }
+
+    // 수정 필요
+    @GetMapping("/{id}/books")
+    public ResponseEntity<List<BookDTO.Response>> getBookDetailById(@PathVariable Long id){
+        return ResponseEntity.ok(publisherService.getPublisherDetailById(id));
     }
 
     // 생성

@@ -1,6 +1,8 @@
 package com.rookies3.myspringbootlab.service;
 
+import com.rookies3.myspringbootlab.controller.dto.BookDTO;
 import com.rookies3.myspringbootlab.controller.dto.PublisherDTO;
+import com.rookies3.myspringbootlab.entity.Book;
 import com.rookies3.myspringbootlab.entity.Publisher;
 import com.rookies3.myspringbootlab.exception.BusinessException;
 import com.rookies3.myspringbootlab.exception.ErrorCode;
@@ -12,6 +14,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -46,6 +49,32 @@ public class PublisherService {
         return PublisherDTO.Response.fromEntity(existPublisher);
     }
 
+    // 출판사별 도서 목록 조회 - 도서 정보 (publisher, detail) 있는 경우
+    public List<BookDTO.Response> getPublisherDetailById(Long id){
+        List<Book> existBook = bookRepository.findByPublisherId(id);
+        Publisher existPublisher = publisherRepository.findById(id)
+                .orElseThrow(() -> new BusinessException(ErrorCode.RESOURCE_NOT_FOUND,
+                        "Publisher", "id", id));
+        PublisherDTO.SimpleResponse responsePublisher = PublisherDTO.SimpleResponse.fromEntity(existPublisher);
+
+        return existBook.stream()
+                .map(book -> {
+                    return BookDTO.Response.builder()
+                            .id(book.getId())
+                            .title(book.getTitle())
+                            .author(book.getAuthor())
+                            .isbn(book.getIsbn())
+                            .price(book.getPrice())
+                            .publishDate(book.getPublishDate())
+                            .publisher(responsePublisher)
+                            .detail(BookDTO.BookDetailResponse.fromEntity(book.getBookDetail()))
+                            .build();
+                })
+                .toList();
+    }
+
+
+
     // 이름으로 특정 출판사 조회
     public PublisherDTO.SimpleResponse getPublisherByName(String name){
         Publisher existPublisher = publisherRepository.findByName(name)
@@ -53,6 +82,12 @@ public class PublisherService {
                         "Publisher", "name", name));
         return PublisherDTO.SimpleResponse.fromEntity(existPublisher);
     }
+
+//    // 출판사별 도서 목록 조회
+//    public PublisherDTO.Response getBookDetailById(Long id) {
+//        Publisher existPublisher = publisherRepository.findById()
+//                .orElseTr
+//    }
 
     // 새로운 출판사 생성
     @Transactional
