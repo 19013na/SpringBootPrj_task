@@ -14,10 +14,7 @@ public enum ErrorCode {
     RESOURCE_DUPLICATE("%s already exists with %s: %s", HttpStatus.CONFLICT),
     RESOURCE_ALREADY_EXISTS("%s already exists: %s", HttpStatus.CONFLICT),
 
-    // Student specific errors - 학생 관련 특수한 경우
-    STUDENT_NUMBER_DUPLICATE("Student already exists with student number: %s", HttpStatus.CONFLICT),
-
-    // StudentDetail specific errors - 학생 상세정보 관련 특수한 경우
+    // 수정 가능
     EMAIL_DUPLICATE("Student detail already exists with email: %s", HttpStatus.CONFLICT),
     PHONE_NUMBER_DUPLICATE("Student detail already exists with phone number: %s", HttpStatus.CONFLICT),
 
@@ -30,8 +27,7 @@ public enum ErrorCode {
     // Department specific errors - 학과 관련 특수한 경우
     DEPARTMENT_CODE_DUPLICATE("Department already exists with code: %s", HttpStatus.CONFLICT),
     DEPARTMENT_NAME_DUPLICATE("Department already exists with name: %s", HttpStatus.CONFLICT),
-    DEPARTMENT_HAS_STUDENTS("Cannot delete department with id: %s. It has %s students",
-            HttpStatus.CONFLICT);
+    DEPARTMENT_HAS_STUDENTS("Cannot delete department with id: %s. It has %s students", HttpStatus.CONFLICT);
 
 
     private final String messageTemplate;

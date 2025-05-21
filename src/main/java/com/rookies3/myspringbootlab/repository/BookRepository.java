@@ -11,6 +11,10 @@ import java.util.Optional;
 
 @Repository
 public interface BookRepository extends JpaRepository<Book, Long> {
+
+    @Query("SELECT b FROM Book b LEFT JOIN FETCH b.bookDetail LEFT JOIN FETCH b.publisher WHERE b.id = :id")
+    Optional<Book> findById(@Param("id") Long id);
+
     Optional<Book> findByIsbn(String isbn);
 
     // list '% param %' 효과
@@ -19,13 +23,6 @@ public interface BookRepository extends JpaRepository<Book, Long> {
     Optional<Book> findByTitle(String title);
     List<Book> findByTitleContainingIgnoreCase(String title);
 
-    //@Query("SELECT b FROM Book b JOIN FETCH b.bookDetail WHERE b.id = :id")
-//    @Query("SELECT b FROM Book b LEFT JOIN FETCH b.bookDetail WHERE b.id = :id")
-//    Optional<Book> findByIdWithBookDetail(@Param("id") Long bookId);
-//
-//    @Query("SELECT b FROM Book b JOIN FETCH b.bookDetail WHERE b.isbn = :isbn")
-//    Optional<Book> findByIsbnWithBookDetail(String isbn);
-
     // left join으로 변경
     @Query("SELECT b FROM Book b LEFT JOIN FETCH b.bookDetail WHERE b.id = :id")
     Optional<Book> findByIdWithBookDetail(@Param("id") Long id);
@@ -33,5 +30,15 @@ public interface BookRepository extends JpaRepository<Book, Long> {
     @Query("SELECT b FROM Book b LEFT JOIN FETCH b.bookDetail WHERE b.isbn = :isbn")
     Optional<Book> findByIsbnWithBookDetail(@Param("isbn") String isbn);
 
+    @Query("SELECT b FROM Book b LEFT JOIN FETCH b.bookDetail LEFT JOIN FETCH b.publisher WHERE b.id = :id")
+    Optional<Book> findByIdWithAllDetails(@Param("id") Long id);
+
+    @Query("SELECT b FROM Book b WHERE b.publisher.id = :publisherId")
+    List<Book> findByPublisherId(@Param("publisherId") Long publisherId);
+
     boolean existsByIsbn(String isbn);
+
+    // 출판사별 도서 수
+    @Query("SELECT COUNT(b) FROM Book b WHERE b.publisher.id = :publisherId")
+    Long countByPublisherId(@Param("publisherId") Long publisherId);
 }

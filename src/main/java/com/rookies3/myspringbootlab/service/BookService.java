@@ -3,10 +3,12 @@ package com.rookies3.myspringbootlab.service;
 import com.rookies3.myspringbootlab.controller.dto.BookDTO;
 import com.rookies3.myspringbootlab.entity.Book;
 import com.rookies3.myspringbootlab.entity.BookDetail;
+import com.rookies3.myspringbootlab.entity.Publisher;
 import com.rookies3.myspringbootlab.exception.BusinessException;
 import com.rookies3.myspringbootlab.exception.ErrorCode;
 import com.rookies3.myspringbootlab.repository.BookDetailRepository;
 import com.rookies3.myspringbootlab.repository.BookRepository;
+import com.rookies3.myspringbootlab.repository.PublisherRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -19,7 +21,8 @@ import java.util.List;
 public class BookService {
 
     private final BookRepository bookRepository;
-    private final BookDetailRepository bookDetailRepository;
+    private final PublisherRepository publisherRepository;
+
 
     public List<BookDTO.Response> getAllBooks(){
         List<Book> bookList = bookRepository.findAll();
@@ -49,6 +52,14 @@ public class BookService {
 
     public List<BookDTO.Response> getBooksByAuthor(String author){
         List<Book> bookList = bookRepository.findByAuthorContainingIgnoreCase(author);
+        return bookList.stream()
+                .map(BookDTO.Response::fromEntity)
+                .toList();
+    }
+
+    // 특정 출판사 모든 도서 조회
+    public List<BookDTO.Response> getBooksByPublisher(Long publisherId){
+        List<Book> bookList = bookRepository.findByPublisherId(publisherId);
         return bookList.stream()
                 .map(BookDTO.Response::fromEntity)
                 .toList();
@@ -123,6 +134,14 @@ public class BookService {
             bookDetail.setPublisher(request.getDetail().getPublisher());
             bookDetail.setCoverImageUrl(request.getDetail().getCoverImageUrl());
             bookDetail.setEdition(request.getDetail().getEdition());
+        }
+
+        // Update Publisher if provided
+        if(request.getPublisherId() != null){
+            Publisher publisher = publisherRepository.findById(request.getPublisherId())
+                    .orElseThrow(() -> new BusinessException(ErrorCode.RESOURCE_NOT_FOUND, "Publisher", "id", request.getPublisherId()));
+
+            book.setPublisher(publisher);
         }
 
         // Save and return updated book

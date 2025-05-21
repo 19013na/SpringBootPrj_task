@@ -66,9 +66,13 @@ public class BookDTO {
         private String isbn;
         private Integer price;
         private LocalDate publishDate;
+        private PublisherDTO.SimpleResponse publisher;
         private BookDetailResponse detail;
 
         public static Response fromEntity(Book book) {
+            PublisherDTO.SimpleResponse publisherResponse = book.getPublisher() != null
+                    ? PublisherDTO.SimpleResponse.fromEntity(book.getPublisher())
+                    : null;
 
             BookDetailResponse detailResponse = book.getBookDetail() != null
                     ? BookDetailResponse.builder()
@@ -76,10 +80,12 @@ public class BookDTO {
                     .description(book.getBookDetail().getDescription())
                     .language(book.getBookDetail().getLanguage())
                     .pageCount(book.getBookDetail().getPageCount())
+                    .publisher(book.getBookDetail().getPublisher())
                     .coverImageUrl(book.getBookDetail().getCoverImageUrl())
                     .edition(book.getBookDetail().getEdition())
                     .build()
                     : null;
+
 
             return Response.builder()
                     .id(book.getId())
@@ -88,6 +94,7 @@ public class BookDTO {
                     .isbn(book.getIsbn())
                     .price(book.getPrice())
                     .publishDate(book.getPublishDate())
+                    .publisher(publisherResponse)
                     .detail(detailResponse)
                     .build();
         }
@@ -122,6 +129,7 @@ public class BookDTO {
         private String description;
         private String language;
         private Integer pageCount;
+        private String publisher;
         private String coverImageUrl;
         private String edition;
     }

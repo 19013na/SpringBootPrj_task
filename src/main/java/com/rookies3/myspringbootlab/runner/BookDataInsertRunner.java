@@ -17,7 +17,7 @@ import java.util.List;
  * 어플리케이션 시작 시 Book과 BookDetail 샘플 데이터를 자동으로 생성하는 러너 클래스
  */
 @Component
-@Order(1)
+@Order(2)
 @RequiredArgsConstructor
 @Slf4j
 public class BookDataInsertRunner implements CommandLineRunner {

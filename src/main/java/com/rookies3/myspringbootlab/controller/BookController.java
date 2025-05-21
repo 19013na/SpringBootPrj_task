@@ -52,7 +52,7 @@ public class BookController {
 
 
     // 수정
-    @PatchMapping("/{id}")
+    @PutMapping("/{id}")
     public ResponseEntity<BookDTO.Response> updateBookById(
             @PathVariable Long id,
             @Valid @RequestBody BookDTO.Request request) {
