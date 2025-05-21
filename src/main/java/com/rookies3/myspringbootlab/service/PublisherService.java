@@ -74,7 +74,6 @@ public class PublisherService {
     }
 
 
-
     // 이름으로 특정 출판사 조회
     public PublisherDTO.SimpleResponse getPublisherByName(String name){
         Publisher existPublisher = publisherRepository.findByName(name)
@@ -83,11 +82,6 @@ public class PublisherService {
         return PublisherDTO.SimpleResponse.fromEntity(existPublisher);
     }
 
-//    // 출판사별 도서 목록 조회
-//    public PublisherDTO.Response getBookDetailById(Long id) {
-//        Publisher existPublisher = publisherRepository.findById()
-//                .orElseTr
-//    }
 
     // 새로운 출판사 생성
     @Transactional

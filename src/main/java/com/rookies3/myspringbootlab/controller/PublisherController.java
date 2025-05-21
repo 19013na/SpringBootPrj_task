@@ -17,22 +17,25 @@ public class PublisherController {
 
     private final PublisherService publisherService;
 
+    // 모든 출판사 조회
     @GetMapping
     public ResponseEntity<List<PublisherDTO.SimpleResponse>> getAllPublisher(){
         return ResponseEntity.ok(publisherService.getAllPublishers());
     }
 
+    // 특정 출판사 조회
     @GetMapping("/{id}")
     public ResponseEntity<PublisherDTO.Response> getPublisherById(@PathVariable Long id){
         return ResponseEntity.ok(publisherService.getPublisherById(id));
     }
 
+    // 출판사 이름으로 조회
     @GetMapping("/name/{name}")
     public ResponseEntity<PublisherDTO.SimpleResponse> getPublisherByName(@PathVariable String name){
         return ResponseEntity.ok(publisherService.getPublisherByName(name));
     }
 
-    // 수정 필요
+    // 출판사별 도서 목록 조회
     @GetMapping("/{id}/books")
     public ResponseEntity<List<BookDTO.Response>> getBookDetailById(@PathVariable Long id){
         return ResponseEntity.ok(publisherService.getPublisherDetailById(id));
