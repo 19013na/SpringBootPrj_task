@@ -14,10 +14,6 @@ public enum ErrorCode {
     RESOURCE_DUPLICATE("%s already exists with %s: %s", HttpStatus.CONFLICT),
     RESOURCE_ALREADY_EXISTS("%s already exists: %s", HttpStatus.CONFLICT),
 
-    // 수정 가능
-    EMAIL_DUPLICATE("Student detail already exists with email: %s", HttpStatus.CONFLICT),
-    PHONE_NUMBER_DUPLICATE("Student detail already exists with phone number: %s", HttpStatus.CONFLICT),
-
     // Book specific errors - 도서 관련 특수한 경우
     ISBN_DUPLICATE("Book already exists with ISBN: %s", HttpStatus.CONFLICT),
     // Publisher specific errors - 출판사 관련 특수한 경우
